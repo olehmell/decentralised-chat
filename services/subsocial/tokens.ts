@@ -52,7 +52,7 @@ export function useSendMessage(channelId: number) {
                     resolve(result)
                 } else if (result.status.isFinalized) {
                     resolve(result)
-                } else if (result.status.isDropped) {
+                }else if (result.status.isDropped) {
                     reject(result)
                 } else if (result.status.isInvalid) {
                     reject(result)
@@ -85,9 +85,15 @@ export function useRequestTokenAndSendMessage(channelId: number) {
             usedAddress = address
         }
 
+        console.log('usedAddress', usedAddress)
+
         await requestToken({ address: usedAddress, captchaToken: params.captchaToken })
         await sendMessage(sendMessageParams)
     }
 
-    return useSWRMutation('requestTokenAndSendMessage', (_, { arg }: { arg: SendMessageParams & { captchaToken: string } }) => requestTokenAndSendMessage(arg))
+    return useSWRMutation(
+        'requestTokenAndSendMessage',
+        (_, { arg }:
+            { arg: SendMessageParams & Omit<ApiRequestTokenBody, 'address'> }
+        ) => requestTokenAndSendMessage(arg))
 }

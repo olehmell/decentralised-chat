@@ -2,9 +2,7 @@ import {usePost} from "@/services/subsocial/posts";
 import {getRelativeTime} from "@/services/time";
 import RobotAvatar from "@/components/Profile/Avatar";
 import ShortAddress from "@/components/Profile/ShortAddress";
-import {useCallback, useMemo} from "react";
-import {toShortAddress} from "@/utils/account";
-import clsx from "clsx";
+import {useMemo} from "react";
 import {cx} from "@/utils/classname";
 import {useMyAccount} from "@/stores/my-account";
 import {toSubsocialAddress} from "@subsocial/utils";
@@ -32,10 +30,13 @@ const ChatItem = ({messageId}: ChatItemProps) => {
                     <RobotAvatar address={struct?.ownerId ?? ''} />
                 </div>
             </div>
-            <div className="chat-header">
-                <ShortAddress address={struct?.ownerId ?? ''} />
+
+            <div className="chat-bubble">
+                <div className="chat-header">
+                    <ShortAddress address={struct?.ownerId ?? ''} />
+                </div>
+                <div className={cx({ 'text-right': isMyMessage })}>{content?.body}</div>
             </div>
-            <div className="chat-bubble">{content?.body}</div>
             <div className="chat-footer opacity-50">
                 {getRelativeTime(struct?.createdAtTime || 0)}
             </div>

@@ -96,23 +96,16 @@ export const useMyAccount = create<State & Actions>()((set, get) => ({
     init: async () => {
         const { isInitialized, login } = get()
 
-        console.log('init', isInitialized)
-
         // Prevent multiple initialization
         if (isInitialized !== undefined) return
         set({ isInitialized: false })
 
         const encodedSecretKey = localStorage.getItem(ACCOUNT_STORAGE_KEY)
 
-        console.log('encodedSecretKey', encodedSecretKey)
-
         let successLogin = false
         if (encodedSecretKey) {
             const secretKey = decodeSecretKey(encodedSecretKey)
-            console.log('secretKey', secretKey)
             const address = await login(secretKey, true)
-
-            console.log('address', address)
 
             if (address) successLogin = true
             else localStorage.removeItem(ACCOUNT_STORAGE_KEY)

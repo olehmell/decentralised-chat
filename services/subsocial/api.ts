@@ -18,9 +18,6 @@ async function connectToSubsocialApi(config: SubsocialConnectionConfig) {
         substrateNodeUrl: substrateUrl,
     })
 
-    // @ts-ignore
-    console.log('IPFS', api.ipfs._ipfsAdminNodeUrl)
-
     postConnectConfig && postConnectConfig(api)
     return api
 }
