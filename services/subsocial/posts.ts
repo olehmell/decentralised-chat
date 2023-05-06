@@ -4,11 +4,11 @@ import useSWRSubscription, {SWRSubscriptionOptions} from 'swr/subscription'
 import {useEffect} from "react";
 import {VoidFn} from "@polkadot/api-base/types";
 
- const getMessageIdsByChannelId = async (channelId: string) => {
+export const getMessageIdsByChannelId = async (channelId: string) => {
     const api = await getSubsocialApi();
     return api.blockchain.getReplyIdsByPostId(channelId);
 }
-async function getPosts (ids: string[]) {
+export async function getPosts (ids: string[]) {
     const api = await getSubsocialApi();
     return await api.findPublicPosts(ids);
 }
@@ -41,19 +41,3 @@ export const useMessageIdsByChannelId = (channelId: string) => {
 
     return swrData;
 }
-
-// export const useSubscribeMessageIdsByPostId = (postId: string) => {
-//     return useSWRSubscription(['commentIds-by-postId', postId], async ([_, postId], { next }) => {
-//         const api = await getSubsocialApi();
-//         const substrateApi = await api.substrateApi;
-//         const unsub = await substrateApi.query.posts.replyIdsByPostId(postId, async (ids) => {
-//             const newIds = Array.from(ids.toPrimitive() as any).map((id) => id + '')
-//             next(null, newIds)
-//         })
-//
-//         console.log('useSubscribeMessageIdsByPostId', unsub);
-//
-//         return unsub;
-//     }, { fallbackData: [] });
-// }
-

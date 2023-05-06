@@ -33,7 +33,7 @@ export async function loginWithSecretKey(secretKey: string): Promise<Signer> {
     return signer
 }
 
-export function truncateAddress(address: string) {
+export function toShortAddress(address: string) {
     return `${address.slice(0, 6)}...${address.slice(-6)}`
 }
 
@@ -45,7 +45,4 @@ export function decodeSecretKey(encodedSecretKey: string) {
     return Buffer.from(decodeURIComponent(encodedSecretKey), 'base64').toString(
         'hex'
     )
-}
-export function toShortAddress (address?: string) {
-    return address?.slice(0, 4) + '...' + address?.slice(-4)
 }

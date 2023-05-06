@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 import { toast } from 'react-hot-toast'
+import TermsOfService from "@/components/Captcha/TermsOfService";
 
 export type CaptchaInvisibleProps = {
     children: (
@@ -29,8 +30,9 @@ export default function CaptchaInvisible({ children }: CaptchaInvisibleProps) {
         return token
     }
     return (
-        <>
+        <div className='pb-3 w-full'>
             {children(runCaptcha)}
+            <TermsOfService />
             <ReCAPTCHA
                 sitekey={getCaptchaSiteKey()}
                 theme='dark'
@@ -38,6 +40,6 @@ export default function CaptchaInvisible({ children }: CaptchaInvisibleProps) {
                 size='invisible'
                 badge='inline'
             />
-        </>
+        </div>
     )
 }

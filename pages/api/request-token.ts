@@ -92,9 +92,7 @@ export default async function handler(
 ) {
   if (req.method !== 'POST') return res.status(404).end()
 
-
   const body = bodySchema.safeParse(req.body)
-  console.log('body', body)
 
   if (!body.success) {
     return res.status(400).send({
