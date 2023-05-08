@@ -12,7 +12,7 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   return (
       <main>
-        <Header chatId={DEFAULT_CHAT_ID.toString()}/>
+        <Header/>
         <section
             id={'chat'}
             className={cx(inter.className, 'min-h-screen', 'flex', 'flex-row', 'items-end', 'justify-center')}
