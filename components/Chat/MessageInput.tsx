@@ -35,7 +35,7 @@ const MessageInput = () => {
         inputRef.current!.value = ''
     }
 
-    return <div className="form-control sticky bottom-0 z-50 h-20 bg-white flex items-end w-full">
+    return <div className="form-control sticky bottom-0 z-50 h-20 bg-base-100 flex items-end w-full">
         <CaptchaInvisible>
             {(runCaptcha) => {
                 const onClick = async () => {
