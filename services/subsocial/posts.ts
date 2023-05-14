@@ -1,8 +1,9 @@
 import { getSubsocialApi } from "@/services/subsocial/api";
 import useSWR from 'swr'
-import useSWRSubscription, {SWRSubscriptionOptions} from 'swr/subscription'
 import {useEffect} from "react";
 import {VoidFn} from "@polkadot/api-base/types";
+import {keyBuilder} from "@/utils/keys";
+
 
 export const getMessageIdsByChannelId = async (channelId: string) => {
     const api = await getSubsocialApi();
@@ -19,11 +20,11 @@ async function getPost (id: string) {
 }
 
 export const usePost = (id: string) => {
-    return useSWR(['post', id], ([_, id]) => getPost(id))
+    return useSWR(keyBuilder.getPostIdKey(id), ([_, id]) => getPost(id))
 }
 
 export const useMessageIdsByChannelId = (channelId: string) => {
-    const swrData = useSWR(['commentIds-by-postId', channelId], ([_, channelId]) => getMessageIdsByChannelId(channelId))
+    const swrData = useSWR(keyBuilder.getCommentIdsByPostIdKey(channelId), ([_, channelId]) => getMessageIdsByChannelId(channelId))
 
     useEffect(() => {
         let unsub: VoidFn | null = null;

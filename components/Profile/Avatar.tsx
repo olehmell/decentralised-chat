@@ -12,7 +12,8 @@ const RobotAvatar = ({ address }: RobotAvatarProps) => {
     return <Image
         sizes='5rem'
         className='relative'
-        fill
+        width={40}
+        height={40}
         src={avatar}
         alt='avatar'
     />

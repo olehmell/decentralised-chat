@@ -2,6 +2,7 @@ import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import {useEffect, useRef} from "react";
 import {useMyAccount} from "@/stores/my-account";
+import {SWRConfig} from "swr";
 
 export default function App({ Component, pageProps }: AppProps) {
   const isInitialized = useRef(false)
@@ -12,5 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
     useMyAccount.getState().init().catch(console.error)
   }, [])
 
-  return <Component {...pageProps} />
+  return <SWRConfig value={{ fallback: pageProps.fallback }}>
+    <Component {...pageProps} />
+  </SWRConfig>
 }
