@@ -28,19 +28,6 @@ const ImageModal = () => {
     closeModal()
   }
 
-  function fileToBase64(file: File): Promise<string> {
-    return new Promise<string>((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const base64String = reader.result as string;
-        resolve(base64String);
-      };
-      reader.onerror = reject;
-      reader.readAsDataURL(file);
-    });
-  }
-  
-
   const sendImage = async () => {
     if (imageUrl.trim() == '' && file == undefined) return;
 
@@ -52,16 +39,13 @@ const ImageModal = () => {
     }
 
     // In case of File, upload it on IPFS & put cid in the schema.
-    if (file != null) {
-      // const base64 = await fileToBase64(file)
-
+    if (file) {
       const api = await getSubsocialApi();
       const cid = await api.ipfs.saveFile(file)
       const image = new ImageExtension({ image: `ipfs://${cid}`, alt: altText })
       addExtension(image)
       close()
     }
-
   }
 
   const changeOption = (e: any) => {
