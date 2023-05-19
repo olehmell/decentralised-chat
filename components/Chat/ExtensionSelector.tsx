@@ -10,7 +10,7 @@ const ExtensionSelector = () => {
     <label className="btn btn-square"><Attach fill="#fff" className="h-4 w-4" /></label>
     <ul className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
       {registry.map(ext => (
-        <li className='border rounded-md'>
+        <li className='border rounded-md mb-2'>
           <div onClick={() => openModal(ext.modal)} className="">
             {ext.icon}
             {ext.name}

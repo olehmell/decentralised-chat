@@ -1,11 +1,9 @@
-
-import Moralis from "moralis";
 import { Extension, IExtension } from "./types";
 
 
 export interface EmptyExtensionSchema extends Extension {
   type: string;
-  options: {}
+  options: any
 }
 
 export class EmptyExtension extends IExtension {
@@ -16,11 +14,11 @@ export class EmptyExtension extends IExtension {
   // Schema Name to be used in IFPS storage.
   static schemaName: string = ""
 
-  constructor() {
+  constructor(options: any) {
     super();
     this.schema = {
       type: EmptyExtension.schemaName,
-      options: {}
+      options: options
     }
   }
 

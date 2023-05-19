@@ -32,6 +32,7 @@
     "postcss": "8.4.23",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-drag-drop-files": "^2.3.10",
     "react-google-recaptcha": "^2.1.0",
     "react-hot-toast": "^2.4.1",
     "swr": "^2.1.3",
