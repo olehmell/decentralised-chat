@@ -1,38 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<a href="https://x.grill.chat">
+  <p align="center"><img height=100 src="https://raw.githubusercontent.com/dappforce/grillchat/main/src/assets/logo/logo.svg"/> Light</p>
+</a>
+<p align="center">
+  <strong>
+    A light-weight experimental version of Grill Chat 💬
+  </strong>
+</p>
+<p align="center">
+  Grill.chat offers a smooth and simple onboarding and user experience while still leveraging the power of blockchain technology.
+</p>
 
-## Getting Started
+---
 
-First, run the development server:
+## How to run Grill.chat locally 🏃‍♂️
+
+Requirements:
+
+- Node.js v16.0.0 or higher
+- Yarn (you can use npm/pnpm if you want to)
+
+### 1. Install dependencies
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+yarn
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Setup environment variables
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Copy the local example env file to .env
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```bash
+cp .env.local.example .env
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### 3. Run the server
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+yarn dev
+```
 
-## Learn More
+Congrats 🎉, you can now access the app at http://localhost:3000
 
-To learn more about Next.js, take a look at the following resources:
+## Environment variables 🌎
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Below is the list of environment variables that you can use to customize your chat, based upon your needs and the needs of your community.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+| Name | Description   | Required? |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| SERVER_MNEMONIC  | Wallet mnemonic of the server, in order to send automatically users [Energy](https://docs.subsocial.network/docs/basics/lightpaper/architecture/energy) | Yes |
+| CAPTCHA_SECRET   | ReCaptcha secret, read [here](https://developers.google.com/recaptcha/intro) for more information.  | Yes |
+| NEXT_PUBLIC_CAPTCHA_SITE_KEY | ReCaptcha sitekey | Yes|
+| NEXT_PUBLIC_MORALIS_API_KEY | API key to fetch NFT metadata from Moralis. Get your own API key [here](https://moralis.io/api/nft/).  | Yes |
 
-## Deploy on Vercel
+We have an example enveironment file created for you [here](.env.example).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
