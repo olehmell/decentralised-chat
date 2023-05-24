@@ -1,5 +1,5 @@
 import Attach from '@/assets/icons/attach.svg'
-import { registry } from '../Extension/registry'
+import { registry } from '../Extensions/registry'
 import useModalStore from '@/stores/modal'
 
 const ExtensionSelector = () => {

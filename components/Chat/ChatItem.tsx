@@ -6,8 +6,8 @@ import { useEffect, useMemo, useState } from "react";
 import { cx } from "@/utils/classname";
 import { useMyAccount } from "@/stores/my-account";
 import { toSubsocialAddress } from "@subsocial/utils";
-import { getExtensionsFromPost } from "../Extension/helper";
-import { IExtension } from "../Extension/types";
+import { getExtensionsFromPost } from "../Extensions/helper";
+import { IExtension } from "../Extensions/types";
 
 type ChatItemProps = {
   messageId: string

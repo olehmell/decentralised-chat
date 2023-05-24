@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { IExtension } from '../Extension/types'
+import { IExtension } from '../Extensions/types'
 import CancelIcon from '@/assets/icons/cancel.svg';
 
 type ExtensionPreviewsProps = {

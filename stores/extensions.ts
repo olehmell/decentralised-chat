@@ -1,4 +1,4 @@
-import { IExtension } from '@/components/Extension/types';
+import { IExtension } from '@/components/Extensions/types';
 import { create } from 'zustand';
 
 type ExtensionState = {
