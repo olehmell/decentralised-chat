@@ -28,14 +28,14 @@ const ChatItem = ({ messageId }: ChatItemProps) => {
 
   useEffect(() => {
     const promises: Promise<React.ReactNode>[] = extensions.map((item) => item.loadPreview())
-    Promise.all(promises).then((data) => setPreviews(data))
+    Promise.all(promises).then((data) => setPreviews(data)).catch((r) => console.log(r))
   }, [extensions.length])
 
   if (isLoading || !data) return null
 
 
   return (
-    <div key={content?.body} className={cx('chat', isMyMessage ? 'chat-end' : 'chat-start')}>
+    <div key={struct?.id} className={cx('chat', isMyMessage ? 'chat-end' : 'chat-start')}>
       <div className="chat-image avatar">
         <div className="w-10 rounded-full">
           <RobotAvatar address={struct?.ownerId ?? ''} />

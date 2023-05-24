@@ -32,7 +32,7 @@ const NFTModal = () => {
     <div className="mt-4">
       <h2>Select a blockchain</h2>
       <select onChange={(e) => setChain(e.currentTarget.value)} className="select select-primary w-full max-w-xs mt-1">
-        {Object.values(SupportedChains).map((item, index) => <option key={index} value={item} selected={item == chain}>{item}</option>)}
+        {Object.values(SupportedChains).map((item) => <option key={item} value={item} selected={item == chain}>{item}</option>)}
       </select>
     </div>
     <div className="mt-4">

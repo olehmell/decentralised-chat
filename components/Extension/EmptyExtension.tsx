@@ -11,7 +11,7 @@ export class EmptyExtension extends IExtension {
   public metadata: any;
   public isPreviewReady: boolean = true;
 
-  // Schema Name to be used in IFPS storage.
+  // Schema Name to be used in IPFS storage.
   static schemaName: string = ""
 
   constructor(options: any) {
