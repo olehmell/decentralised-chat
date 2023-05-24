@@ -62,7 +62,7 @@ Below is the list of environment variables that you can use to customize your ch
 | SERVER_MNEMONIC  | Wallet mnemonic of the server, in order to send automatically users [Energy](https://docs.subsocial.network/docs/basics/lightpaper/architecture/energy) | Yes |
 | CAPTCHA_SECRET   | ReCaptcha secret, read [here](https://developers.google.com/recaptcha/intro) for more information.  | Yes |
 | NEXT_PUBLIC_CAPTCHA_SITE_KEY | ReCaptcha sitekey | Yes|
-| NEXT_PUBLIC_MORALIS_API_KEY | API key to fetch NFT metadata from Moralis. Get your own API key [here](https://moralis.io/api/nft/).  | Yes |
+| NEXT_PUBLIC_MORALIS_API_KEY | API key to fetch NFT metadata from Moralis. Get your own API key [here](https://moralis.io/api/nft/).  | No |
 
 We have an example enveironment file created for you [here](.env.example).
 
