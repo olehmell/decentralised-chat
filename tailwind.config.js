@@ -15,4 +15,16 @@ module.exports = {
     },
   },
   plugins: [require("@tailwindcss/typography"), require("daisyui")],
+  daisyui: {
+    themes: [
+      {
+        dark: {
+          ...require("daisyui/src/colors/themes")["[data-theme=dark]"],
+          "base-100": "#111729",
+          "neutral": "#4D46DC",
+        }
+      }
+    ],
+    // darkTheme: "dark"
+  }
 }

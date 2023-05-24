@@ -16,7 +16,7 @@ export default function Home() {
         <Header/>
         <section
             id={'chat'}
-            className={cx(inter.className, 'min-h-screen', 'flex', 'flex-row', 'items-end', 'justify-center')}
+            className={cx(inter.className, 'min-h-screen', 'flex', 'flex-row', 'items-end', 'justify-center', '')}
         >
           <Chat />
         </section>

@@ -27,7 +27,7 @@ const ChatItem = ({ messageId }: ChatItemProps) => {
   if (content) extensions = getExtensionsFromPost(content)
 
   useEffect(() => {
-    const promises: Promise<React.ReactNode>[] = extensions.map((item) => item.loadPreview())
+    const promises: Promise<React.ReactNode>[] = extensions.map((item) => item?.loadPreview())
     Promise.all(promises).then((data) => setPreviews(data))
   }, [extensions.length])
 
@@ -42,7 +42,7 @@ const ChatItem = ({ messageId }: ChatItemProps) => {
         </div>
       </div>
 
-      <div className="chat-bubble">
+      <div className="chat-bubble bg-slate-800">
         <div className="chat-header">
           <ShortAddress address={struct?.ownerId ?? ''} />
         </div>

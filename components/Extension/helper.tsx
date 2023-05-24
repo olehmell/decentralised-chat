@@ -1,13 +1,13 @@
 import { PostContent } from "@subsocial/api/types"
 import { registry } from "./registry";
 import { Extension, IExtension } from "./types";
-import { EmptyExtension } from "./emptyExtension";
+import { EmptyExtension } from "./EmptyExtension";
 
 function getRegisteredExtension(extension: Extension): IExtension | null {
   const index = registry.findIndex((v) => v.schemaName == extension.type)
-  if (index == -1) new EmptyExtension();
+  if (index == -1) new EmptyExtension({});
 
-  return registry[index].constructor(extension.options)
+  return registry[index]?.constructor(extension.options)
 }
 
 const getExtensionsFromPost = (post: PostContent): IExtension[] => {
