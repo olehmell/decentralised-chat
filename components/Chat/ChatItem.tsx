@@ -35,7 +35,7 @@ const ChatItem = ({ messageId }: ChatItemProps) => {
 
 
   return (
-    <div key={content?.body} className={cx('chat', isMyMessage ? 'chat-end' : 'chat-start')}>
+    <div key={struct?.id} className={cx('chat', isMyMessage ? 'chat-end' : 'chat-start')}>
       <div className="chat-image avatar">
         <div className="w-10 rounded-full">
           <RobotAvatar address={struct?.ownerId ?? ''} />

@@ -1,17 +1,23 @@
-import { ImageExtension } from './image/ImageExtension'
+import { ImageExtension, ImageExtensionSchema } from './image/ImageExtension'
 import ImageModal from './image/ImageModal'
 import NFTModal from './nft/NFTModal'
-import { NFT as NFTExtension, NFTSchema } from './nft/NftExtension'
+import { NFTSchema, NFT as NftExtension } from './nft/NftExtension'
 import { ExtensionEntry } from './types'
 import ImageIcon from '@/assets/extension-icons/image.svg'
 import NFTIcon from '@/assets/extension-icons/nft.svg'
 
 const nft: ExtensionEntry = {
   name: "NFT",
+<<<<<<< HEAD:components/Extensions/registry.tsx
   schemaName: NFTExtension.schemaName,
   constructor: (options: any) => new NFTExtension(options),
   modal: <NFTModal />,
   icon: <NFTIcon />
+=======
+  schemaName: NftExtension.schemaName,
+  constructor: (options: any) => new NftExtension(options),
+  modal: <NFTModal />
+>>>>>>> main:components/Extension/registry.tsx
 }
 
 const image: ExtensionEntry = {
@@ -22,4 +28,8 @@ const image: ExtensionEntry = {
   icon: <ImageIcon />
 }
 
+// Append your Extension Schema in this type.
+export type ExtensionSchemas = NFTSchema | ImageExtensionSchema
+
+// Add the Extension Entry for your extension in this array.
 export const registry: ExtensionEntry[] = [nft, image]

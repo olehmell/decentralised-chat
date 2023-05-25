@@ -45,42 +45,61 @@ export class NFT extends IExtension {
     }
   }
 
+  async init() {
+    try {
+      await Moralis.start({
+        apiKey: process.env.NEXT_PUBLIC_MORALIS_API_KEY,
+      });
+    } catch (e) { }
+  }
+
+  async fetchSolanaNft(tokenId: string): Promise<void> {
+    try {
+      const response = await Moralis.SolApi.nft.getNFTMetadata({
+        address: tokenId
+      })
+      const resp = await fetch(response.result.metaplex.metadataUri)
+      const data = await resp.json()
+      if (data != null) {
+        let nftName, tokenSymbol = ''
+        if (data['collection']) {
+          nftName = data['collection']['name']
+          tokenSymbol = data['collection']['family']
+        } else {
+          nftName = data['name']
+          nftName = data['symbol']
+        }
+        this.metadata = { image: data['image'], nftName, tokenSymbol }
+      }
+    } catch (e) { console.log(e) }
+  }
+
+  async fetchEvmNft(address: string, chain: number, tokenId: string): Promise<void> {
+    const response = await Moralis.EvmApi.nft.getNFTMetadata({
+      address,
+      chain,
+      tokenId,
+    });
+    this.metadata = JSON.parse(JSON.stringify({ ...response?.result.metadata, nftName: response?.result.name, tokenSymbol: response?.result.symbol }))
+  }
 
   async loadPreview(): Promise<React.ReactNode> {
     try {
+      await this.init()
+
+      const schemaChainName = this.schema.options.chain.toLowerCase();
+
       const address = this.schema.options.address;
 
-      let chain = chainId[this.schema.options.chain.toLowerCase()];
+      let chain = chainId[schemaChainName];
 
       const tokenId = this.schema.options.tokenId;
 
       // If the chain is Solana, then use Moralis Solana API.
-      if (this.schema.options.chain.toLowerCase() == 'solana') {
-        try {
-          const response = await Moralis.SolApi.nft.getNFTMetadata({
-            address: tokenId
-          })
-          const resp = await fetch(response.result.metaplex.metadataUri)
-          const data = await resp.json()
-          if (data != null) {
-            let nftName, tokenSymbol = ''
-            if (data['collection']) {
-              nftName = data['collection']['name']
-              tokenSymbol = data['collection']['family']
-            } else {
-              nftName = data['name']
-              nftName = data['symbol']
-            }
-            this.metadata = { image: data['image'], nftName, tokenSymbol }
-          }
-        } catch (e) { console.log(e) }
+      if (schemaChainName == 'solana') {
+        await this.fetchSolanaNft(tokenId)
       } else {
-        const response = await Moralis.EvmApi.nft.getNFTMetadata({
-          address,
-          chain,
-          tokenId,
-        });
-        this.metadata = JSON.parse(JSON.stringify({ ...response?.result.metadata, nftName: response?.result.name, tokenSymbol: response?.result.symbol }))
+        await this.fetchEvmNft(address, chain, tokenId)
       }
       this.isPreviewReady = true;
       return this.render();
@@ -92,7 +111,8 @@ export class NFT extends IExtension {
     }
   }
 
-  getImageData(data: string): string {
+  getImageData(): string {
+    const data = this.metadata['image'] ?? ''
     if (data.startsWith("ipfs://")) {
       const ipfsCid = data.split("ipfs://")[1]
       return `https://ipfs.io/ipfs/${ipfsCid}`
@@ -109,7 +129,7 @@ export class NFT extends IExtension {
 
     return <div className="mt-4 mb-4">
       <div className="card md:card-side bg-base-100 shadow-xl">
-        <figure className="w-5/12"><img src={this.getImageData(this.metadata['image'] ?? '')} /></figure>
+        <figure className="w-5/12"><img alt={this.metadata.nftName} src={this.getImageData()} /></figure>
         <div className="card-body p-4 w-7/12">
           <h2 className="card-title text-orange-500">{this.metadata.nftName}</h2>
           <p className="">{this.metadata.tokenSymbol} #{this.schema.options.tokenId.slice(0, 5)} <br /> {this.schema.options.chain}</p>

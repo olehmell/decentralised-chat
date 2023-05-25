@@ -5,10 +5,10 @@ import { Extension, IExtension } from "../types";
 export interface ImageExtensionSchema extends Extension {
   type: string;
   options: {
-    // image as string can be IPFS cid, imageURL, or base64.
+    /// image as string can be IPFS cid, imageURL, or base64.
     image: string,
 
-    // Alt text for the image.
+    /// Alt text for the image.
     alt: string
   }
 }
@@ -19,7 +19,7 @@ export class ImageExtension extends IExtension {
   public isPreviewReady: boolean = true;
 
   // Schema Name to be used in IFPS storage.
-  static schemaName: string = ""
+  static schemaName: string = "IMAGE"
 
   constructor(options: any) {
     super();
@@ -34,10 +34,11 @@ export class ImageExtension extends IExtension {
     }
   }
 
-  getImageData(data: string): string {
+  getImageData(): string {
+    const data = this.schema.options.image
     if (data.startsWith("ipfs://")) {
       const ipfsCid = data.split("ipfs://")[1]
-      return `https://ipfs.io/ipfs/${ipfsCid}`
+      return `https://ipfs.subsocial.network/ipfs/${ipfsCid}`
     }
     return data;
   }
@@ -50,9 +51,15 @@ export class ImageExtension extends IExtension {
   render(): React.ReactNode {
     return <div key={this.schema.options.image}>
       <div className="card w-96 bg-base-100 shadow-xl mt-4 mb-4">
+<<<<<<< HEAD:components/Extensions/image/ImageExtension.tsx
         <figure><img alt={this.schema.options.alt} src={this.getImageData(this.schema.options.image)} /></figure>
         <div className="card-body p-4">
           {this.schema.options.alt && <p>{this.schema.options.alt}</p>}
+=======
+        <figure><img alt={this.schema.options.alt} src={this.getImageData()} /></figure>
+        <div className="card-body">
+          <p><b>ALT</b>: {this.schema.options.alt}</p>
+>>>>>>> main:components/Extension/image/ImageExtension.tsx
           <div className="badge badge-secondary">IMAGE</div>
         </div>
       </div>

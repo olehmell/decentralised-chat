@@ -8,12 +8,13 @@ import { getMessageIdsByChannelId, getPosts } from "@/services/subsocial/posts";
 import { unstable_serialize } from "swr";
 import { PostData } from "@subsocial/api/types";
 import Modal from '@/components/Modal/Modal';
+import {keyBuilder} from "@/utils/keys";
 
 const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   return (
       <main>
-        <Header/>
+        <Header />
         <section
             id={'chat'}
             className={cx(inter.className, 'min-h-screen', 'flex', 'flex-row', 'items-end', 'justify-center', '')}
@@ -30,17 +31,18 @@ const fetchFallbackProps = async () => {
     const messageIds = await getMessageIdsByChannelId(channelId)
     const messages = await getPosts(messageIds)
 
+  console.log('messages', messages)
+
     const messagesFallback: Record<string, PostData> = {}
 
     messages.forEach((message) => {
-        const key = unstable_serialize(['post', message.id])
+        const key = unstable_serialize(keyBuilder.getPostIdKey(message.id))
         messagesFallback[key] = message
     })
 
     return {
         fallback: {
-            // unstable_serialize() array style key
-            [unstable_serialize(['commentIds-by-postId', channelId])]: messageIds,
+            [unstable_serialize(keyBuilder.getCommentIdsByPostIdKey(channelId))]: messageIds,
             ...messagesFallback
         }
     }
