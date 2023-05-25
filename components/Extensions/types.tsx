@@ -1,21 +1,32 @@
-export interface ExtensionSchema {
-  name: string;
-  options: any;
+export interface ExtensionSchema<ExtensionOptions extends any> {
+  name: string
+  options: ExtensionOptions
 }
 
-export abstract class ExtensionWidget {
-  abstract schema: ExtensionSchema
+export abstract class ExtensionWidget<ExtensionOptions extends any> {
+  public schema: ExtensionSchema<ExtensionOptions>
+
   abstract render(): React.ReactNode
+  
   abstract isPreviewReady: boolean
+  
   abstract loadPreview(): Promise<React.ReactNode>
+
+  constructor(name: string, options: ExtensionOptions) {
+    this.schema = {
+      name,
+      options
+    }
+  }
 }
 
-export interface Extension {
+  export interface Extension<Widget extends ExtensionWidget<any>>  {
   /** Extension name that is being used in IPFS */
   name: string
 
   /** A method to construct the Extension class from options data from IPFS. */
-  initialize: (options: any) => ExtensionWidget,
+  initialize: (options: any) => Widget
+
   /** Label to show in Extension Selector. */
   label: string
 

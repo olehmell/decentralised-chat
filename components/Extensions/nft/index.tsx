@@ -1,14 +1,14 @@
-import {Extension} from "@/components/Extensions/types";
-import {ImageExtension} from "@/components/Extensions/image/ImageExtension";
-import ImageModal from "@/components/Extensions/image/ImageModal";
-import ImageIcon from "@/assets/extension-icons/image.svg";
+import { Extension } from "../types"
+import { NftExtension, NftOptions } from "./NftExtension";
+import NftModal from "./NftModal";
+import NftIcon from "@/assets/extension-icons/nft.svg";
 
-const image: Extension = {
-  name: ImageExtension.extensionName,
-  initialize: (options: any) => new ImageExtension(options),
-  label: "Image",
-  modal: <ImageModal />,
-  icon: <ImageIcon />
+const nft: Extension<NftExtension> = {
+  name: NftExtension.extensionName,
+  initialize: (options: NftOptions) => new NftExtension(options),
+  label: "NFT",
+  modal: <NftModal />,
+  icon: <NftIcon />
 }
 
-export default image
+export default nft;

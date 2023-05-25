@@ -20,7 +20,7 @@ const ExtensionSelector = () => {
               className="p-2 flex gap-4"
             >
               {ext.icon}
-              {ext.name}
+              {ext.label}
             </div>
           </li>
         ))}

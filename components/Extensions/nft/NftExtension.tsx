@@ -1,5 +1,5 @@
 import Moralis from 'moralis'
-import { ExtensionSchema, ExtensionWidget } from '../types'
+import { ExtensionWidget } from '../types'
 
 const chainId: Record<string, number> = {
   ethereum: 1,
@@ -14,34 +14,21 @@ function getOpenseaLink(options: any): string {
   return `https://opensea.io/assets/${assetChain}/${address}/${tokenId}`
 }
 
-export interface NFTSchema extends ExtensionSchema {
-  name: string
-  options: {
-    chain: string
-    address: string
-    tokenId: string
-  }
+export type NftOptions = {
+  chain: string
+  address: string
+  tokenId: string
 }
 
-export class NftExtension extends ExtensionWidget {
-  public schema: NFTSchema
+export class NftExtension extends ExtensionWidget<NftOptions> {
   public metadata: any
   public isPreviewReady: boolean = false
 
   // Extension Name to be used in IPFS storage.
   static extensionName: string = 'NFT'
 
-  constructor(options: any) {
-    super()
-    const { chain, address, tokenId } = options
-    this.schema = {
-      name: NftExtension.extensionName,
-      options: {
-        chain,
-        address,
-        tokenId,
-      },
-    }
+  constructor(options: NftOptions) {
+    super(NftExtension.extensionName, options)
   }
 
   async init() {

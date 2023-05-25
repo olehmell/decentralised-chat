@@ -1,37 +1,23 @@
 
-import { ExtensionSchema, ExtensionWidget } from "../types";
+import { ExtensionWidget } from "../types";
 
+export type ImageOptions = {
+  /** image as string can be IPFS cid, imageURL, or base64. */
+  image: string,
 
-export interface ImageExtensionSchema extends ExtensionSchema {
-  name: string;
-  options: {
-    /// image as string can be IPFS cid, imageURL, or base64.
-    image: string,
-
-    /// Alt text for the image.
-    alt: string
-  }
+  /** Alt text for the image. */
+  alt: string
 }
 
-export class ImageExtension extends ExtensionWidget {
-  public schema: ImageExtensionSchema;
+export class ImageExtension extends ExtensionWidget<ImageOptions> {
   public metadata: any;
   public isPreviewReady: boolean = true;
 
   // Schema Name to be used in IFPS storage.
   static extensionName: string = "IMAGE"
 
-  constructor(options: any) {
-    super();
-    const { image, alt } = options;
-
-    this.schema = {
-      name: ImageExtension.extensionName,
-      options: {
-        image,
-        alt
-      }
-    }
+  constructor(options: ImageOptions) {
+    super(ImageExtension.extensionName, options)
   }
 
   getImageData(): string {
