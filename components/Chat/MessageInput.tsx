@@ -1,6 +1,6 @@
 import Send from '@/assets/icons/send.svg'
 import { cx } from '@/utils/classname'
-import { useRef } from 'react'
+import { useRef, KeyboardEventHandler } from 'react'
 import {
   useRequestTokenAndSendMessage,
   useSendMessage,
@@ -60,6 +60,7 @@ const MessageInput = () => {
     <div className="form-control sticky bottom-0 z-50 h-21 bg-base-100 flex items-end w-full pt-2">
       <CaptchaInvisible>
         {(runCaptcha) => {
+
           const onClick = async () => {
             if (shouldSendMessage) {
               await handle()
@@ -68,6 +69,13 @@ const MessageInput = () => {
             const token = await runCaptcha()
             await handle(token)
           }
+
+          const onEnterKeyDown: KeyboardEventHandler<HTMLTextAreaElement> = (event) => {
+            if (event.key === 'Enter') {
+              onClick()
+            }
+          }
+
           return (
             <>
               <ExtensionPreviews onClear={clear} extensions={extensions} />
@@ -85,6 +93,7 @@ const MessageInput = () => {
                     autoCapitalize="sentences"
                     autoCorrect="off"
                     spellCheck="false"
+                    onKeyDown={onEnterKeyDown}
                   ></textarea>
                   <button
                     onClick={onClick}
