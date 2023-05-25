@@ -17,7 +17,7 @@ const Header = () => {
               <span className="mr-4">{address}</span>
               <button
                 onClick={() => logout()}
-                className="btn btn-outline border-indigo-700 hover:bg-transparent hover:text-white min-h-fit h-auto py-3 normal-case font-normal hover:border-indigo-700 px-5 flex-nowrap rounded-3xl"
+                className="btn btn-outline border-indigo-600 hover:bg-transparent hover:ring-2 hover:text-white min-h-fit h-auto py-3 normal-case font-normal hover:border-indigo-700 px-5 flex-nowrap rounded-3xl"
               >
                 Logout
               </button>
