@@ -54,7 +54,7 @@ export class ImageExtension extends IExtension {
         <figure><img alt={this.schema.options.alt} src={this.getImageData()} /></figure>
         <div className="card-body p-4">
           {this.schema.options.alt && <p>{this.schema.options.alt}</p>}
-          <div className="badge badge-secondary">IMAGE</div>
+          <div className="badge badge-secondary">Image</div>
         </div>
       </div>
     </div>
