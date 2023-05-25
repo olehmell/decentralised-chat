@@ -1,18 +1,16 @@
-<a href="https://x.grill.chat">
-  <p align="center"><img height=100 src="https://raw.githubusercontent.com/dappforce/grillchat/main/src/assets/logo/logo.svg"/> Light</p>
-</a>
+
 <p align="center">
-  <strong>
-    A light-weight experimental version of Grill Chat 💬
-  </strong>
+  <img height=100 src="https://raw.githubusercontent.com/dappforce/grillchat/main/src/assets/logo/logo.svg" />
 </p>
 <p align="center">
-  Grill.chat offers a smooth and simple onboarding and user experience while still leveraging the power of blockchain technology.
+  <strong>
+    A light-weight version of <a href="https://x.grill.chat">Grill.chat</a> 💬
+  </strong>
 </p>
 
 ---
 
-## How to run Grill.chat locally 🏃‍♂️
+## How to run locally 🏃‍♂️
 
 Requirements:
 
@@ -30,7 +28,7 @@ yarn
 Copy the local example env file to .env
 
 ```bash
-cp .env.local.example .env
+cp .env.example .env
 ```
 
 ### 3. Run the server
@@ -41,17 +39,17 @@ yarn dev
 
 Congrats 🎉, you can now access the app at http://localhost:3000
 
-## Extending Grill with custom extensions
+## Grill extensions
 
-Grill light app supports extending the functionality of chat element with custom set of extensions that can be built on top of it. 
+Light Grill can be extended with new functionality via custom extensions.
 
 Each extension should have:
-- A very specific usecase / purpose, for example: sending NFTs or image from IPFS / URL, etc. 
-- A new JSON schema to be used in IPFS extending the [IExtension](/components/Extension/types.tsx) class.
-- A utility class for serializing / de-serializing json and implementing the preview renderer.
+- A specific usecase, for example: share NFTs in chat or uploade images to IPFS, etc.
+- A JSON schema that will extend IPFS content of the chat message. See `ExtensionWidget` class in [types.tsx](/components/Extensions/types.tsx).
 - An input modal for the asking data from users.
+- A render function for your extension widget.
 
-After creation of above requirements, you just need to add your extension to Grill Light Registry, [here](components/Extension/registry.tsx).
+Once you created your extension, add it to the Extension Registry of Light Grill [here](/components/Extensions/registry.tsx).
 
 ## Environment variables 🌎
 
@@ -68,4 +66,3 @@ We have an example enveironment file created for you [here](.env.example).
 
 ## Facing Issues?
 If you are building an extension on top of Grill light or having hard time running it locally, join our [Devs Chat](https://t.me/+ZzvLu0ZfkQwxNGQy) and let us know about it.
-
