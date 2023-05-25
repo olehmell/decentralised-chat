@@ -72,27 +72,21 @@ const MessageInput = () => {
             <>
               <ExtensionPreviews onClear={clear} extensions={extensions} />
               <div className="w-full flex relative">
+                
                 <ExtensionSelector />
-                <div className='w-full relative flex-col'>
-                  <textarea
-                    ref={inputRef}
-                    className={cx(
-                      'textarea textarea-bordered text-white focus: focus:border-indigo-700 rounded-3xl w-full'
-                    )}
-                    placeholder="Write message..."
-                    rows={1}
-                    autoComplete="off"
-                    autoCapitalize="sentences"
-                    autoCorrect="off"
-                    spellCheck="false"
-                  ></textarea>
-                  <button
-                    onClick={onClick}
-                    className="btn hover:bg-indigo-700 hover:border-indigo-700 rounded-full min-h-fit h-auto p-2 absolute right-[7px] top-[7px]"
-                  >
-                    <Send className="relative top-px h-4 w-4" />
-                  </button>
-                </div>
+                <textarea
+                  ref={inputRef}
+                  className={cx('textarea textarea-bordered text-white focus: focus:border-indigo-700 rounded-3xl w-full')}
+                  placeholder="Write message..."
+                  rows={1}
+                  autoComplete='off'
+                  autoCapitalize='sentences'
+                  autoCorrect='off'
+                  spellCheck='false'
+                ></textarea>
+                <button onClick={onClick} className="btn hover:bg-indigo-700 rounded-full min-h-fit h-auto p-2 absolute right-2 top-2 ">
+                  <Send className="relative top-px h-4 w-4" />
+                </button>
               </div>
             </>
           )
