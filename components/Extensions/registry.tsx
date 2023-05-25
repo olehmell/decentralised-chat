@@ -8,16 +8,10 @@ import NFTIcon from '@/assets/extension-icons/nft.svg'
 
 const nft: ExtensionEntry = {
   name: "NFT",
-<<<<<<< HEAD:components/Extensions/registry.tsx
-  schemaName: NFTExtension.schemaName,
-  constructor: (options: any) => new NFTExtension(options),
-  modal: <NFTModal />,
-  icon: <NFTIcon />
-=======
   schemaName: NftExtension.schemaName,
   constructor: (options: any) => new NftExtension(options),
-  modal: <NFTModal />
->>>>>>> main:components/Extension/registry.tsx
+  modal: <NFTModal />,
+  icon: <NFTIcon />
 }
 
 const image: ExtensionEntry = {
