@@ -1,6 +1,6 @@
 import useModalStore from '@/stores/modal'
 import { useState } from 'react'
-import { NFT } from './NftExtension'
+import { NftExtension } from './NftExtension'
 import useExtensionsStore from '@/stores/extensions'
 import CancelIcon from '@/assets/icons/cancel.svg'
 
@@ -29,7 +29,7 @@ const NftModal = () => {
   const sendNFTMessage = () => {
     if (address.trim() == '' || tokenId.trim() == '') return
 
-    const nft = new NFT({ chain, address, tokenId })
+    const nft = new NftExtension({ chain, address, tokenId })
     addExtension(nft)
     close()
   }
