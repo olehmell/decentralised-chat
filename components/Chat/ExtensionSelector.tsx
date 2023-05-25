@@ -19,7 +19,7 @@ const ExtensionSelector = () => {
               onClick={() => openModal(ext.modal)}
               className="p-2 flex gap-4"
             >
-              {ext.icon}
+              {ext.icon || <Attach fill="#A3ACBE" width="20" height="20" />}
               {ext.label}
             </div>
           </li>

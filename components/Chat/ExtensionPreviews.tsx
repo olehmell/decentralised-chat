@@ -31,7 +31,7 @@ const ExtensionPreviews = (props: ExtensionPreviewsProps) => {
     return (
       <div className="p-4 w-full bg-slate-800 rounded-box mb-2">
         <div className="flex w-full flex-row items-center justify-between">
-          <h1 className="card-title text-white">Add image</h1>
+          <h1 className="card-title text-white">Extension preview</h1>
           <button
             onClick={clear}
             className="p-1 rounded-full transition bg-transparent disabled:hover:ring-0 disabled:ring-offset-0 hover:ring-2 focus-visible:!ring-2 focus-visible:outline-none inline-block text-center absolute right-6 m-1 mr-0 text-2xl text-text-muted"
