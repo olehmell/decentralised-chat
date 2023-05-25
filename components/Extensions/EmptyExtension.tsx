@@ -1,12 +1,11 @@
-import { Extension, IExtension } from "./types";
+import { ExtensionSchema, ExtensionWidget } from "./types";
 
-
-export interface EmptyExtensionSchema extends Extension {
-  type: string;
+export interface EmptyExtensionSchema extends ExtensionSchema {
+  name: string;
   options: any
 }
 
-export class EmptyExtension extends IExtension {
+export class EmptyExtension extends ExtensionWidget {
   public schema: EmptyExtensionSchema;
   public metadata: any;
   public isPreviewReady: boolean = true;
@@ -17,11 +16,10 @@ export class EmptyExtension extends IExtension {
   constructor(options: any) {
     super();
     this.schema = {
-      type: EmptyExtension.schemaName,
+      name: EmptyExtension.schemaName,
       options: options
     }
   }
-
 
   async loadPreview(): Promise<React.ReactNode> {
     return this.render()

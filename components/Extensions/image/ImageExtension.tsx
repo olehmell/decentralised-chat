@@ -1,9 +1,9 @@
 
-import { Extension, IExtension } from "../types";
+import { ExtensionSchema, ExtensionWidget } from "../types";
 
 
-export interface ImageExtensionSchema extends Extension {
-  type: string;
+export interface ImageExtensionSchema extends ExtensionSchema {
+  name: string;
   options: {
     /// image as string can be IPFS cid, imageURL, or base64.
     image: string,
@@ -13,20 +13,20 @@ export interface ImageExtensionSchema extends Extension {
   }
 }
 
-export class ImageExtension extends IExtension {
+export class ImageExtension extends ExtensionWidget {
   public schema: ImageExtensionSchema;
   public metadata: any;
   public isPreviewReady: boolean = true;
 
   // Schema Name to be used in IFPS storage.
-  static schemaName: string = "IMAGE"
+  static extensionName: string = "IMAGE"
 
   constructor(options: any) {
     super();
     const { image, alt } = options;
 
     this.schema = {
-      type: ImageExtension.schemaName,
+      name: ImageExtension.extensionName,
       options: {
         image,
         alt

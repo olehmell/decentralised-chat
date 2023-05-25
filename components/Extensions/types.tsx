@@ -1,28 +1,27 @@
-export interface Extension {
-  type: string;
+export interface ExtensionSchema {
+  name: string;
   options: any;
 }
 
-export abstract class IExtension {
-  abstract schema: Extension
+export abstract class ExtensionWidget {
+  abstract schema: ExtensionSchema
   abstract render(): React.ReactNode
   abstract isPreviewReady: boolean
   abstract loadPreview(): Promise<React.ReactNode>
 }
 
-export interface ExtensionEntry {
-  // Name to show in Extension Selector.
+export interface Extension {
+  /** Extension name that is being used in IPFS */
   name: string
 
-  // Name of the schema that is being used in IPFS.
-  schemaName: string
+  /** A method to construct the Extension class from options data from IPFS. */
+  initialize: (options: any) => ExtensionWidget,
+  /** Label to show in Extension Selector. */
+  label: string
 
-  // A method to construct the Extension class from options data from IPFS.
-  constructor: (options: any) => IExtension,
-
-  // Icon to be used in the Extension Selector.
+  /** Icon to be used in the Extension Selector. */
   icon?: React.ReactNode
 
-  // Modal built to take input for the Extension.
+  /** Modal built to take input for the Extension. */
   modal: React.ReactNode
 }

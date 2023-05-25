@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import { IExtension } from '../Extensions/types'
+import { ExtensionWidget } from '../Extensions/types'
 import CancelIcon from '@/assets/icons/cancel.svg';
 
 type ExtensionPreviewsProps = {
-  extensions: IExtension[]
+  extensions: ExtensionWidget[]
 
   // onClear property is passed when the previews are for a new message.
   onClear?: () => void

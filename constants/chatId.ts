@@ -1,1 +1,1 @@
-export const DEFAULT_CHAT_ID = 1010
+export const DEFAULT_CHAT_ID = 3761

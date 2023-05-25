@@ -1,12 +1,12 @@
-import { IExtension } from '@/components/Extensions/types';
+import { ExtensionWidget } from '@/components/Extensions/types';
 import { create } from 'zustand';
 
 type ExtensionState = {
-  extensions: IExtension[]
+  extensions: ExtensionWidget[]
 };
 
 type ExtensionActions = {
-  addExtension: (ext: IExtension) => void;
+  addExtension: (ext: ExtensionWidget) => void;
   removeExtensionAt: (index: number) => void;
   clearExtensions: () => void;
 };
@@ -17,7 +17,7 @@ const initState: ExtensionState = {
 
 const useExtensionsStore = create<ExtensionState & ExtensionActions>()((set, get) => ({
   ...initState,
-  addExtension: (ext: IExtension) => {
+  addExtension: (ext: ExtensionWidget) => {
     const currentExtensions = get().extensions;
     set({ extensions: [...currentExtensions, ext] })
   },

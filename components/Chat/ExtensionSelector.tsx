@@ -14,7 +14,7 @@ const ExtensionSelector = () => {
       </div>
       <ul className="dropdown-content menu -left-10 p-2 top-3 rounded-lg bg-slate-800 shadow-[0_5px_50px_-12px_rgb(0,0,0)] w-52">
         {registry.map((ext) => (
-          <li className="rounded-md">
+          <li key={ext.name} className="rounded-md">
             <div
               onClick={() => openModal(ext.modal)}
               className="p-2 flex gap-4"

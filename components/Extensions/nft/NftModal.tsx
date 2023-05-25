@@ -10,7 +10,7 @@ enum SupportedChains {
   SOLANA = 'Solana',
 }
 
-const NFTModal = () => {
+const NftModal = () => {
   const { closeModal } = useModalStore()
   const [chain, setChain] = useState<string>(
     SupportedChains.ETHEREUM.toString()
@@ -89,4 +89,4 @@ const NFTModal = () => {
   )
 }
 
-export default NFTModal
+export default NftModal
