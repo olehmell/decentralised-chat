@@ -40,8 +40,8 @@ const ExtensionPreviews = (props: ExtensionPreviewsProps) => {
           </button>
         </div>
         <div className="carousel carousel-center space-x-4 w-full">
-          {previews?.map((i) => (
-            <div className="carousel-item w-2/3">{i}</div>
+          {previews?.map((n, i) => (
+            <div key={i} className="carousel-item w-2/3">{n}</div>
           ))}
         </div>
       </div>

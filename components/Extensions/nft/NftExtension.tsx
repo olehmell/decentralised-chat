@@ -104,7 +104,7 @@ export class NftExtension extends ExtensionWidget<NftOptions> {
       return this.render()
     } catch (e) {
       console.log(e)
-      return <div>NFT can't be loaded.</div>
+      return <div>NFT cannot be loaded.</div>
     }
   }
 
