@@ -4,7 +4,6 @@ import {useEffect} from "react";
 import {VoidFn} from "@polkadot/api-base/types";
 import {keyBuilder} from "@/utils/keys";
 
-
 export const getMessageIdsByChannelId = async (channelId: string) => {
     const api = await getSubsocialApi();
     return api.blockchain.getReplyIdsByPostId(channelId);
