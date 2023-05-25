@@ -65,4 +65,4 @@ Below is the list of environment variables that you can use to customize your ch
 We have an example enveironment file created for you [here](.env.example).
 
 ## Facing Issues?
-If you are building an extension on top of Grill light or having hard time running it locally, join our [Devs Chat](https://t.me/+ZzvLu0ZfkQwxNGQy) and let us know about it.
+If you are building an extension on top of Grill light or having hard time running it locally, join our [Devs Chat](https://t.me/+0bn2xWmRXdpmM2Y6) and let us know about it.
