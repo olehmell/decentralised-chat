@@ -6,8 +6,8 @@ import { useEffect, useMemo, useState } from "react";
 import { cx } from "@/utils/classname";
 import { useMyAccount } from "@/stores/my-account";
 import { toSubsocialAddress } from "@subsocial/utils";
-import { getExtensionsFromPost } from "../Extension/helper";
-import { IExtension } from "../Extension/types";
+import { getExtensionsFromPost } from "../Extensions/helper";
+import { IExtension } from "../Extensions/types";
 
 type ChatItemProps = {
   messageId: string
@@ -27,8 +27,8 @@ const ChatItem = ({ messageId }: ChatItemProps) => {
   if (content) extensions = getExtensionsFromPost(content)
 
   useEffect(() => {
-    const promises: Promise<React.ReactNode>[] = extensions.map((item) => item.loadPreview())
-    Promise.all(promises).then((data) => setPreviews(data)).catch((r) => console.log(r))
+    const promises: Promise<React.ReactNode>[] = extensions.map((item) => item?.loadPreview())
+    Promise.all(promises).then((data) => setPreviews(data))
   }, [extensions.length])
 
   if (isLoading || !data) return null
@@ -42,7 +42,7 @@ const ChatItem = ({ messageId }: ChatItemProps) => {
         </div>
       </div>
 
-      <div className="chat-bubble">
+      <div className="chat-bubble bg-slate-800">
         <div className="chat-header">
           <ShortAddress address={struct?.ownerId ?? ''} />
         </div>

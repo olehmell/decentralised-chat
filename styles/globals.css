@@ -3,20 +3,38 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
+  --foreground-rgb: 255, 255, 255;
+  color: #fff;
 }
 
 p {
-  color: #000;
+  color: #fff;
+}
+
+div {
+  color: #fff
+}
+
+.btn {
+  color: #fff
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
+    color: #fff;
   }
 
   p {
     color: #fff;
+  }
+
+  div {
+    color: #fff
+  }
+
+  .btn {
+    color: #fff
   }
 }
 

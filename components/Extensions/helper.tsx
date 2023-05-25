@@ -11,7 +11,7 @@ function getRegisteredExtension(extension: Extension): IExtension {
   const index = registry.findIndex((v) => v.schemaName == extension.type)
   if (index == -1) return new EmptyExtension({});
 
-  return registry[index].constructor(extension.options)
+  return registry[index]?.constructor(extension.options)
 }
 
 const getExtensionsFromPost = (post: ExtendedPostContent): IExtension[] => {

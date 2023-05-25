@@ -8,7 +8,7 @@ const Modal = () => {
   return  (
     <>
       <div className={`modal modal-bottom sm:modal-middle ${isOpen ? 'modal-open' : ''}`}>
-        <div className="modal-box">
+        <div className="modal-box bg-slate-800">
           {modal ?? <></>}
         </div>
       </div>

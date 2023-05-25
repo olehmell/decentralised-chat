@@ -1,7 +1,7 @@
 import {cx} from "@/utils/classname";
 
 export default function TermsOfService() {
-    return <p className={cx('text-sm text-muted', 'text-center', 'pt-1')}>
+    return <p className={cx('text-xs text-gray-600', 'text-center', 'pt-1')}>
         This site is protected by reCAPTCHA and the Google{' '}
         <a
             className={cx('underline')}
