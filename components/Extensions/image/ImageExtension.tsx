@@ -10,7 +10,7 @@ export type ImageOptions = {
 }
 
 export class ImageExtension extends ExtensionWidget<ImageOptions> {
-  public metadata: any;
+
   public isPreviewReady: boolean = true;
 
   // Schema Name to be used in IFPS storage.
@@ -28,7 +28,6 @@ export class ImageExtension extends ExtensionWidget<ImageOptions> {
     }
     return data;
   }
-
 
   async loadPreview(): Promise<React.ReactNode> {
     return this.render()

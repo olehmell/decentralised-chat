@@ -20,7 +20,9 @@ export abstract class ExtensionWidget<ExtensionOptions extends any> {
   }
 }
 
-  export interface Extension<Widget extends ExtensionWidget<any>>  {
+export abstract class AnyExtensionWidget extends ExtensionWidget<any> {}
+
+export interface Extension<Widget extends ExtensionWidget<any>>  {
   /** Extension name that is being used in IPFS */
   name: string
 

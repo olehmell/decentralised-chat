@@ -7,7 +7,7 @@ import { cx } from '@/utils/classname'
 import { useMyAccount } from '@/stores/my-account'
 import { toSubsocialAddress } from '@subsocial/utils'
 import { getExtensionsFromPost } from '../Extensions/helper'
-import { ExtensionWidget } from '../Extensions/types'
+import { AnyExtensionWidget } from '../Extensions/types'
 
 type ChatItemProps = {
   messageId: string
@@ -26,7 +26,8 @@ const ChatItem = ({ messageId }: ChatItemProps) => {
     [myAddress, struct?.ownerId]
   )
 
-  let extensions: ExtensionWidget[] = []
+  let extensions: AnyExtensionWidget[] = []
+
   if (content) extensions = getExtensionsFromPost(content)
 
   useEffect(() => {
