@@ -22,19 +22,33 @@ Requirements:
 ```bash
 yarn
 ```
+or 
+```bash
+npm i
+```
 
 ### 2. Setup environment variables
 
 Copy the local example env file to .env
 
+For Mac/Linux:
 ```bash
 cp .env.example .env
+```
+
+For Windows:
+```bash 
+copy .env.example .env
 ```
 
 ### 3. Run the server
 
 ```bash
 yarn dev
+```
+or
+```bash
+npm run dev
 ```
 
 Congrats 🎉, you can now access the app at http://localhost:3000
