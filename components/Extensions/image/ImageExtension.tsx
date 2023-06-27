@@ -1,7 +1,7 @@
 
 import { ExtensionWidget } from "../types";
 
-export type ImageOptions = {
+export type ImageProperties = {
   /** image as string can be IPFS cid, imageURL, or base64. */
   image: string,
 
@@ -9,15 +9,15 @@ export type ImageOptions = {
   alt: string
 }
 
-export class ImageExtension extends ExtensionWidget<ImageOptions> {
+export class ImageExtension extends ExtensionWidget<ImageProperties> {
 
   public isPreviewReady: boolean = true;
 
   // Schema Name to be used in IFPS storage.
-  static extensionName: string = "IMAGE"
+  static id: string = "IMAGE"
 
-  constructor(options: ImageOptions) {
-    super(ImageExtension.extensionName, options)
+  constructor(properties: ImageProperties) {
+    super(ImageExtension.id, properties)
   }
 
   getImageData(): string {

@@ -4,8 +4,8 @@ import ImageModal from "./ImageModal"
 import ImageIcon from "@/assets/extension-icons/image.svg";
 
 const image: Extension<ImageExtension> = {
-  name: ImageExtension.extensionName,
-  initialize: (options: any) => new ImageExtension(options),
+  name: ImageExtension.id,
+  initialize: (properties: any) => new ImageExtension(properties),
   label: "Image",
   modal: <ImageModal />,
   icon: <ImageIcon />
