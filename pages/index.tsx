@@ -55,7 +55,7 @@ export default function GrillPage() {
           <label className="label">
             <span className="label-text">What is your article URL?</span>
           </label>
-          <input type="text" onChange={e => {
+          <input defaultValue={MY_MIRROR_URL} type="text" onChange={e => {
             resource.value = parseUrl(e.target.value)
           }} placeholder="Type your article URL here" className="input input-bordered w-full max-w-xs"/>
         </div>
