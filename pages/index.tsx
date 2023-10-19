@@ -13,7 +13,7 @@ const parseUrl = (url: string) => {
     app: host,
     resourceType: 'post',
     resourceValue: {
-      id: pathname.split('/')[1]
+      id: pathname.substring(1)
     },
   })
 }
