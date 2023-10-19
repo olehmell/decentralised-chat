@@ -14,21 +14,21 @@ function getOpenseaLink(options: any): string {
   return `https://opensea.io/assets/${assetChain}/${address}/${tokenId}`
 }
 
-export type NftOptions = {
+export type NftProperties = {
   chain: string
   address: string
   tokenId: string
 }
 
-export class NftExtension extends ExtensionWidget<NftOptions> {
+export class NftExtension extends ExtensionWidget<NftProperties> {
   public metadata: any
   public isPreviewReady: boolean = false
 
   // Extension Name to be used in IPFS storage.
-  static extensionName: string = 'NFT'
+  static id: string = 'NFT'
 
-  constructor(options: NftOptions) {
-    super(NftExtension.extensionName, options)
+  constructor(properties: NftProperties) {
+    super(NftExtension.id, properties)
   }
 
   async init() {
