@@ -1949,6 +1949,19 @@
     tslib "^2.5.0"
     ws "^8.13.0"
 
+"@preact/signals-core@^1.4.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@preact/signals-core/-/signals-core-1.5.0.tgz#5d34db4d3c242c93e1cefb7ce8b2d10ecbdbfa79"
+  integrity sha512-U2diO1Z4i1n2IoFgMYmRdHWGObNrcuTRxyNEn7deSq2cru0vj0583HYQZHsAqcs7FE+hQyX3mjIV7LAfHCvy8w==
+
+"@preact/signals-react@^1.3.6":
+  version "1.3.6"
+  resolved "https://registry.yarnpkg.com/@preact/signals-react/-/signals-react-1.3.6.tgz#aa91b690669a1a7537df689cd0c69f9661f766e4"
+  integrity sha512-jr/4lhcRo5W3hfieCJGDPbxq3YjfZDvpmTcisJ+lRhjWvnoYrgMKBoTiLsFPACO8VIEATaIBZXYiGAV08YvnfQ==
+  dependencies:
+    "@preact/signals-core" "^1.4.0"
+    use-sync-external-store "^1.2.0"
+
 "@protobufjs/aspromise@^1.1.1", "@protobufjs/aspromise@^1.1.2":
   version "1.1.2"
   resolved "https://registry.npmjs.org/@protobufjs/aspromise/-/aspromise-1.1.2.tgz"
@@ -2051,10 +2064,17 @@
     "@polkadot/api" latest
     lodash.camelcase "^4.3.0"
 
-"@subsocial/opencomm@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.npmjs.org/@subsocial/opencomm/-/opencomm-0.0.3.tgz"
-  integrity sha512-KVQmyUOxpYMJmeyljIaAge6CO3KGHnThqYqG2Y5CM3AQKFCB0wfW/aTynZ4DHWaMxoGNIXISgrJOL2mGO8a/Gw==
+"@subsocial/grill-widget@^0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@subsocial/grill-widget/-/grill-widget-0.0.8.tgz#a8a584daffdac4edbb319ec59579a0bdd0004441"
+  integrity sha512-dRPBcn+LU4LLVzHmVCm3MuIVc6dRZ2vC80PAys05NBVTdak+Jz1RQbc1yozPg6ReHgzZhQhU5z+ErYsYRvF09Q==
+
+"@subsocial/resource-discussions@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@subsocial/resource-discussions/-/resource-discussions-0.0.4.tgz#4afeb53dde4accc0c70e80fc245b1416c74afdf2"
+  integrity sha512-GAuC6SFfyrSpCdIuwLlA/hOouNgcj+6j+kZiDPz/cxLcNPdB4gqGVNnqKaL/rNE3MLNetpgI+gmatTomGRKeiA==
+  dependencies:
+    graphology "^0.25.1"
 
 "@subsocial/utils@latest":
   version "0.8.11"
@@ -2942,6 +2962,13 @@ convert-source-map@^1.7.0:
   resolved "https://registry.npmjs.org/convert-source-map/-/convert-source-map-1.9.0.tgz"
   integrity sha512-ASFBup0Mz1uyiIjANan1jzLQami9z1PoYSZCiiYW2FczPbenXc45FZdBZLzOT+r6+iciuEModtmCti+hjaAk0A==
 
+copy-to-clipboard@^3.3.3:
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/copy-to-clipboard/-/copy-to-clipboard-3.3.3.tgz#55ac43a1db8ae639a4bd99511c148cdd1b83a1b0"
+  integrity sha512-2KV8NhB5JqC3ky0r9PMCAZKbUHSwtEo4CwCs0KXgruG43gX5PMqDEBbVU4OUzw2MuAWUfsuFmWvEKG5QRfSnJA==
+  dependencies:
+    toggle-selection "^1.0.6"
+
 core-js-compat@^3.25.1:
   version "3.30.1"
   resolved "https://registry.npmjs.org/core-js-compat/-/core-js-compat-3.30.1.tgz"
@@ -3655,6 +3682,11 @@ eventemitter3@^5.0.0:
   resolved "https://registry.npmjs.org/eventemitter3/-/eventemitter3-5.0.1.tgz"
   integrity sha512-GWkBvjiSZK87ELrYOSESUYeVIc9mvLLf/nXalMOS5dYrgZq9o5OVkbZAVM06CVxYsCwH9BDZFPlQTlPA1j4ahA==
 
+events@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/events/-/events-3.3.0.tgz#31a95ad0a924e2d2c419a813aeb2c4e878ea7400"
+  integrity sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==
+
 evp_bytestokey@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/evp_bytestokey/-/evp_bytestokey-1.0.3.tgz#7fcbdb198dc71959432efe13842684e0525acb02"
@@ -3972,6 +4004,14 @@ grapheme-splitter@^1.0.4:
   version "1.0.4"
   resolved "https://registry.npmjs.org/grapheme-splitter/-/grapheme-splitter-1.0.4.tgz"
   integrity sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==
+
+graphology@^0.25.1:
+  version "0.25.1"
+  resolved "https://registry.yarnpkg.com/graphology/-/graphology-0.25.1.tgz#f92b86294782522d3898ce4480e4a577c0c2568a"
+  integrity sha512-yYA7BJCcXN2DrKNQQ9Qf22zBHm/yTbyBR71T1MYBbGtywNHsv0QZtk8zaR6zxNcp2hCCZayUkHp9DyMSZCpoxQ==
+  dependencies:
+    events "^3.3.0"
+    obliterator "^2.0.2"
 
 has-bigints@^1.0.1, has-bigints@^1.0.2:
   version "1.0.2"
@@ -5265,6 +5305,11 @@ object.values@^1.1.6:
     define-properties "^1.1.4"
     es-abstract "^1.20.4"
 
+obliterator@^2.0.2:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/obliterator/-/obliterator-2.0.4.tgz#fa650e019b2d075d745e44f1effeb13a2adbe816"
+  integrity sha512-lgHwxlxV1qIg1Eap7LgIeoBWIMFibOjbrYPIPJZcI1mmGAI2m3lNYpK12Y+GBdPQ0U1hRwSord7GIaawz962qQ==
+
 once@^1.3.0:
   version "1.4.0"
   resolved "https://registry.npmjs.org/once/-/once-1.4.0.tgz"
@@ -6228,6 +6273,11 @@ to-regex-range@^5.0.1:
   integrity sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==
   dependencies:
     is-number "^7.0.0"
+
+toggle-selection@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/toggle-selection/-/toggle-selection-1.0.6.tgz#6e45b1263f2017fa0acc7d89d78b15b8bf77da32"
+  integrity sha512-BiZS+C1OS8g/q2RRbJmy59xpyghNBqrr6k5L/uKBGRsTfxmu3ffiRnd8mlGPUVayg8pvfi5urfnu8TU7DVOkLQ==
 
 tr46@~0.0.3:
   version "0.0.3"
