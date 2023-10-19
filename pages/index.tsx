@@ -1,68 +1,76 @@
-import { Inter } from 'next/font/google'
-import Chat from "@/components/Chat/Chat";
-import { cx } from "@/utils/classname";
-import Header from "@/components/Header";
-import { DEFAULT_CHAT_ID } from "@/constants/chatId";
-import React from "react";
-import { getMessageIdsByChannelId, getPosts } from "@/services/subsocial/posts";
-import { unstable_serialize } from "swr";
-import { PostData } from "@subsocial/api/types";
-import Modal from '@/components/Modal/Modal';
-import {keyBuilder} from "@/utils/keys";
+import grill from '@subsocial/grill-widget'
+import {useSignal} from "@preact/signals-react";
+import {useEffect} from "react";
+import {Resource} from "@subsocial/resource-discussions";
+import copy from 'copy-to-clipboard';
 
-const inter = Inter({ subsets: ['latin'] })
-export default function Home() {
-  return (
-      <main>
-        <Header />
-        <section
-            id={'chat'}
-            className={cx(inter.className, 'min-h-screen', 'flex', 'flex-row', 'items-end', 'justify-center', '')}
-        >
-          <Chat />
-        </section>
-        <Modal />
-      </main>
-  )
+const MY_MIRROR_URL = 'https://mirror.xyz/0x26674D44c3a4c145482Dd360069a8e5Fee2Ec74C/pTKZOISLI64e2-NTfD2O5VZJ0ajGs3J_urRXPhX7Q5M'
+const parseUrl = (url: string) => {
+  const {host, pathname} = new URL(url);
+
+  return new Resource({
+    schema: 'social',
+    app: host,
+    resourceType: 'post',
+    resourceValue: {
+      id: pathname.split('/')[1]
+    },
+  })
 }
 
-const fetchFallbackProps = async () => {
-    const channelId = DEFAULT_CHAT_ID.toString()
-    const messageIds = await getMessageIdsByChannelId(channelId)
-    const messages = await getPosts(messageIds)
+export default function GrillPage() {
+  const resource = useSignal(parseUrl(MY_MIRROR_URL))
+  const grillUrl = useSignal('')
+  const coppied = useSignal(false)
 
-  console.log('messages', messages)
-
-    const messagesFallback: Record<string, PostData> = {}
-
-    messages.forEach((message) => {
-        const key = unstable_serialize(keyBuilder.getPostIdKey(message.id))
-        messagesFallback[key] = message
-    })
-
-    return {
-        fallback: {
-            [unstable_serialize(keyBuilder.getCommentIdsByPostIdKey(channelId))]: messageIds,
-            ...messagesFallback
+  useEffect(() => {
+    grill.init(
+      {
+        hub: {id: '1198'},
+        theme: 'light',
+        channel: {
+          type: 'resource',
+          resource: resource.value,
+          settings: {
+            enableBackButton: false,
+            enableLoginButton: false,
+            enableInputAutofocus: true,
+          },
+          metadata: {
+            title: 'Comments',
+            image: 'bafybeigv5t5wz7uk75vouc3w652rvyhcjct3d265ada2fjot2vwvfpagly'
+          },
+        },
+        onWidgetCreated: (iframe) => {
+          grillUrl.value = iframe.src
+          return iframe
         }
-    }
-}
+      }
+    )
+  }, [resource.value])
 
-// SSG optimization
-// export async function getStaticProps () {
-//     const props = await fetchFallbackProps()
-//
-//     return {
-//         props,
-//         revalidate: 2
-//     }
-// }
-
-// SSR optimization
-export async function getServerSideProps () {
-    const props = await fetchFallbackProps()
-
-    return {
-        props
-    }
+  return <div className="grid grid-cols-2 gap-4">
+      <div>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">What is your article URL?</span>
+          </label>
+          <input type="text" onChange={e => {
+            resource.value = parseUrl(e.target.value)
+          }} placeholder="Type your article URL here" className="input input-bordered w-full max-w-xs"/>
+        </div>
+        <div className="border-2 rounded-md p-3 mt-4">
+          <p className='break-words'>{grillUrl.value}</p>
+          <div className='mt-2'>
+            <button className="btn btn-sm btn-primary" onClick={() => {
+              copy(grillUrl.value)
+              coppied.value = true
+            }}
+            >Copy</button>
+            {coppied.value && <span className='ml-2'>Copied!</span>}
+          </div>
+        </div>
+      </div>
+      <div id={'grill'} style={{height: '100vh'}}></div>
+    </div>
 }
