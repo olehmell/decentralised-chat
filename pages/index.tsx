@@ -42,7 +42,7 @@ export default function GrillPage() {
           },
         },
         onWidgetCreated: (iframe) => {
-          grillUrl.value = iframe.src
+          grillUrl.value = iframe.src + '&height=800&display=iframe'
           return iframe
         }
       }
