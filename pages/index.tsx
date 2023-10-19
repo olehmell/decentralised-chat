@@ -37,7 +37,7 @@ export default function GrillPage() {
             enableInputAutofocus: true,
           },
           metadata: {
-            title: 'Comments',
+            title: 'Discuss the article here',
             image: 'bafybeigv5t5wz7uk75vouc3w652rvyhcjct3d265ada2fjot2vwvfpagly'
           },
         },
@@ -49,7 +49,7 @@ export default function GrillPage() {
     )
   }, [resource.value])
 
-  return <div className="grid grid-cols-2 gap-4">
+  return <div className="grid grid-cols-2 gap-4 mx-4">
       <div>
         <div className="form-control">
           <label className="label">
